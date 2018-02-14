@@ -2,6 +2,7 @@
 import helpers
 import signer
 
+## Generic API class. All API calls inherit these generic properties. API's are called with .call()
 class API(object):
     # Base variables for all APIs
     __host           = 'https://api.kucoin.com%s?%s'    # KuCoin host

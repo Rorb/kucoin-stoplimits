@@ -1,6 +1,9 @@
-# For managing HTTP
 import requests
 import time
+
+# This "helpers" class is all about aiding apis.py in making a request
+# KuCoin is a little screwy, so I made this class to catch some exceptions and retry sometimes when things went wrong
+# Called "helpers" because in the original fork it has more than one function.
 
 # Time offset for KuCoin, because the server isn't well-synced for some reason
 timeOffset = -8
@@ -11,6 +14,7 @@ def request(method, url, headers, parent):
     global timeOffset
     req = requests.request(method, url, headers=headers)
 
+    # Handle various possible errors - some trigger retries, others fix the time offset, still others throw exceptions
     while req.status_code >= 300:
         if req.status_code == 401 and req.json()['msg'] == 'Invalid nonce':
             global timeOffset

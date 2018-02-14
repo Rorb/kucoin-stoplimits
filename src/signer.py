@@ -12,7 +12,7 @@ try:
 except:
     pass
 
-# Generates signature
+# Generates signature for KuCoin's signing authentication
 stsFormat = '%s/%s/%s'
 def sign(path, timestamp, params):
     stringToSign = stsFormat % (path, timestamp, params)

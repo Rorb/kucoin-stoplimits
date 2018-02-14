@@ -2,7 +2,8 @@ import apis
 
 '''
         This file serves as an abstraction-layer between bots and APIs, so that the bots may be reused with
-    different underlying APIs (e.g., for another exchange). 
+    different underlying APIs (e.g., for another exchange). I use the same bot-layer on every exchange and only
+    change the way APIs are called behind the interface in order to maximize modularity.
 
 '''
 

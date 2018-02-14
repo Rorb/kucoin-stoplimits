@@ -1,7 +1,7 @@
 '''
 
         Made for the r/nanotrade community by u/--orb
-        Make sure you downloaded it off of <> for safety
+        Make sure you downloaded it off of https://github.com/Rorb/kucoin-stoplimits for safety
         And check out the readme. --help is also descriptive
 
         KuCoin APIs are glitchy as heck so gl
@@ -11,11 +11,15 @@
 import sys, getopt
 import bots
 
+
+# Error out and inform user
+# Particularly for errors regarding CLI usage
 def error(msg):
     print 'usage error: %s' % msg
     print 'usage error: python kcsl.py --help for more info'
     sys.exit(1)
 
+# Help user in configuring their api-creds.txt file
 def configure():
     credFile = bots.interface.apis.signer.credFile
 
@@ -40,9 +44,9 @@ def configure():
     print 'Credential file updated. You should be good to go.'
     sys.exit(0)
 
-
+# Handle -h/--help switch, since it's such a blob of text
 def displayHelp():
-    print   '\nusage: python kcsl.py [-hX] [-B|-S] <coin> <stop> <limit> <amount>\n\n' \
+    print   'usage: python kcsl.py [-hX] [-B|-S] <coin> <stop> <limit> <amount>\n\n' \
             'You can also rearrange the order using the following switches:\n' \
             '-h  --help     : exit normal execution and display this help menu\n' \
             '-X  --configure: enter configuration menu to update KuCoin API keys\n' \
@@ -59,7 +63,9 @@ def displayHelp():
             '\n' \
             'Either of the above will SELL (-S) 500 (-a) XRB into BTC (-c) for a limit\n' \
             'of 90k satoshis (-l) if the price falls under 99.999k (-s) satoshis'
+    sys.exit(0)
 
+## Main function; handle args, initiate bots
 def main(argv):
     print '\n'
     try:
@@ -79,7 +85,6 @@ def main(argv):
     for opt, arg in options:
         if opt in ['-h', '--help']:
             displayHelp()
-            sys.exit(0)
 
         if opt in ['-X', '--configure']:
             configure()

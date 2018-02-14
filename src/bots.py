@@ -1,6 +1,8 @@
 import interface
 import time
 
+# Bot class, includes various levels of bots which inherit from each other to perform progressively more complex actions
+
 '''
         Level 5 bot - the core Bot class.
         This class sets up a standardized work-loop and lays the framework for other bots to follow 
@@ -11,10 +13,13 @@ class Bot(object):
         self.looping = True
         self.__main__()
 
+    # Define ultra-generic main loop
     def __main__(self):
+        # Initializes child-bots
         self._init_()
 
-        while self.looping:
+        # Performs generic loop actions
+        while self.looping: # 'self.looping' is the trigger to exit the loop
             time.sleep(self.SHORT)
             self._loop_()
 
