@@ -79,6 +79,12 @@ Typing `python kcsl.py` invokes the Python script. KCSL stands for "KuCoinStopLi
 4. The limit price (-s/--limit). This is the **price you will actually sell for**. Remember that the order-book uses order matching. As a result, if you have a stop-order trigger @ 100k and a sell-limit @ 90k, an order like 99k **will also be sold** (which is good for you!). The limit price sets an effective minimum/maximum you are willing to accept.  
 5. The amount (-a/--amount). This is the amount you wish to sell or purchase **denominated in whatever coin appears first in the pairing**. For example, **XRB-BTC** has **XRB** as the first coin of the pair, and thus `-B` indicates you are **buying** XRB and `-a` is the **amount** of XRB you are purchasing. On the other hand, **BTC-USDT** has **BTC** as the first coin of the pair. As a result, `-S` would indicate you are **selling BTC**, and `-B` would indicate you are **purchasing BTC**. If you get confused, just consult the KuCoin sell page.  
 
+Additionally, there is a shorthand variant of the script which will assume the parameters `coin stop limit amount` in that order. An example would be something as simple as:  
+
+    kcsl.py -B BTC-USDT 7800 7950 1.1  
+
+The above example would set a stop-order @ 7800 USDT. If the stop order were triggered (the most recent price crosses 7800), a limit-buy would be set for buying 1.1 BTC for 7950 USD (per BTC), or roughly ~8700 USDT would be spent to purchase 1.1 BTC. If you get used to this short-hand, it will make your life easier. The reason I included the other method (with all the switches) is because it can be easy to forget which number is which, and better to be safe than sorry.  
+
 If you have any questions, you can probably find me on Reddit in r/nanotrade.  
 
 ## No feature requests, please.  
