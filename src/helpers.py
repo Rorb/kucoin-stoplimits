@@ -13,9 +13,10 @@ retryDelay = 3
 def request(method, url, headers, parent):
     global timeOffset
     req = requests.request(method, url, headers=headers)
+
     # Handle various possible errors - some trigger retries, others fix the time offset, still others throw exceptions
-    while req.status_code >= 300 or req.json()['msg'] == 'Invalid nonce':
-        if req.json()['msg'] == 'Invalid nonce':
+    while req.status_code >= 300:
+        if req.status_code == 401 and req.json()['msg'] == 'Invalid nonce':
             global timeOffset
             sentTime = headers['KC-API-NONCE']
             recvTime = req.json()['timestamp']
@@ -41,8 +42,6 @@ def request(method, url, headers, parent):
     if not req.json()['success']:
         message = req.json()['msg']
         errorInfo = (parent.__class__.__name__, message)
-        print message
-        print errorInfo
-        raise Exception('Request failure calling %s.\n\nError: %s' %errorInfo)
+        raise Exception('Request failure calling %s.\n\nError: %s' % errorInfo)
 
     return req.json()['data']
