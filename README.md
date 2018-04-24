@@ -1,6 +1,8 @@
 # Intro
 
 This is a simple bot that will create stop-limit buy and sell orders for you, at the request of some community members on Reddit.
+In current state of this fork, this fork fixed a bug which  in helpers.py from original codes at https://github.com/Rorb/kucoin-stoplimits
+In future, I might add a GUI interface.
 
 ## Warning
 
@@ -20,7 +22,7 @@ requests.py (`pip install requests`)
 Anyone using Linux/Mac should know how to use Python and this will be very easy for you.  
 
 `pip install requests`  
-`./kcsl.py --help`  
+`./kcsl.py --help`  or `python kcsl.py --help`
 
 
 ### Windows Instructions
@@ -89,4 +91,6 @@ If you have any questions, you can probably find me on Reddit in r/nanotrade.
 
 ## No feature requests, please.  
 
-Fork it or do whatever you want with it, but I won't be updating it (aside from maybe putting it into pip or something). It's only a small part of a larger bot ecosystem I already forked and trimmed down to give to the subreddit. I don't want to grow this fork out more. 
+Original code forked from https://github.com/Rorb/kucoin-stoplimits and my main purpose of forking it was to fixed a bug in it.
+
+Fork it or do whatever you want with it, but I won't be updating it (aside from maybe adding GUI to it). It's only a small part of a larger bot ecosystem Rorb already forked and trimmed down to give to the (nano) subreddit.
